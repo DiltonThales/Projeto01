@@ -1,0 +1,30 @@
+package com.fai.aprendendospring.controller;
+
+
+import com.fai.aprendendospring.business.UsuarioService;
+import com.fai.aprendendospring.infrastructure.entity.Usuario;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController //Essa é a classe controladora, lida com as requisições, camda mais externa da api
+@RequestMapping("/usuario") // ela é repsonsável por apontar a uri dessa controller
+@RequiredArgsConstructor //contrutor
+public class UsuarioController {
+
+    private final UsuarioService usuarioService;
+
+
+    @PostMapping
+    public ResponseEntity<Usuario> salvaUsuario(Usuario usuario){
+        return ResponseEntity.ok(usuarioService.salvaUsuario(usuario));
+
+    }
+
+
+
+
+}
