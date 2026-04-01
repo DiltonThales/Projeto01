@@ -38,7 +38,7 @@ public class UsuarioController {
                 new UsernamePasswordAuthenticationToken(usuarioDTO.getEmail(),
                         usuarioDTO.getSenha())
         );
-        return jwtUtil.generateToken(authentication.getName());
+        return "Bearer " + jwtUtil.generateToken(authentication.getName());
     }
 
 
