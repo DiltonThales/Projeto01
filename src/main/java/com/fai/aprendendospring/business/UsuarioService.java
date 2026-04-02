@@ -2,6 +2,7 @@ package com.fai.aprendendospring.business;
 
 import com.fai.aprendendospring.infrastructure.entity.Usuario;
 import com.fai.aprendendospring.infrastructure.exeptions.ConlictException;
+import com.fai.aprendendospring.infrastructure.exeptions.ResourceNotFoundExcepton;
 import com.fai.aprendendospring.infrastructure.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,14 @@ public class UsuarioService {
 
     public  boolean verificaEmailExistente(String email){
         return usuarioRepository.existsByEmail(email);
+    }
+
+    public Usuario buscarUsuarioPorEmail(String email){
+        return usuarioRepository.findByEmail(email).orElseThrow(
+                () -> new ResourceNotFoundExcepton("Email não encontrado" + email));
+    }
+
+    public void deletaUsuarioPorEmail(String email){
+        usuarioRepository.deleteByEmail(email);
     }
 }
