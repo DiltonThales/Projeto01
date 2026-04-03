@@ -5,13 +5,13 @@ import com.fai.aprendendospring.infrastructure.exeptions.ConlictException;
 import com.fai.aprendendospring.infrastructure.exeptions.ResourceNotFoundExcepton;
 import com.fai.aprendendospring.infrastructure.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor //gera um constreutor que possui os campos private final
 public class UsuarioService {
+
 
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
